@@ -1,0 +1,149 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" integrity="sha512-6lLUdeQ5uheMFbWm3CP271l14RsX1xtx+J5x2yeIDkkiBpeVTNhTqijME7GgRKKi6hCqovwCoBTlRBEC20M8Mg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% endblock %}
+    {% block title %}
+    <title>farm.kg</title>
+    {% endblock %}
+</head>
+<body style="background-image: url({% static "images/altyin_arashan_companies.svg" %})">
+    {% block content %}
+            <div class="bg__landing">
+            <header class="nav">
+                <div class="container nav__content">
+                    <div class="nav__logo">
+                        <img src="{% static 'images/logo.svg' %}" alt="logo">
+                    </div>
+
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="{% url 'landing' %}" class="nav__link">Home</a></li>
+                        <li class="nav__item"><a href="{% url 'companies' %}" class="nav__link">Companies</a></li>
+                        <li class="nav__item"><a href="{% url 'about_us' %}" class="nav__link">About Us</a></li>
+                        <li class="nav__item"><a href="#contact" class="nav__link">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="nav__line"></div>
+            </header>
+
+            <section class="export">
+                <div class="container export__content">
+                    <div class="export__text">
+                    <div class="export__title">Agricultural export guide</div>
+                </div>
+                <div class="export__logo">
+                    <img src="{% static 'images/logo_export.svg' %}" alt="" class="ex__logo">
+                </div>
+                </div>
+
+            </section>
+
+            <section class="companies">
+                <div class="companies__top">
+                    <div class="btn__export">
+                        <a href="#contact"><div class="btn__export_title">Submit your application</div></a>
+                        <a href="#contact"><div class="btn__export_title_mobi">Contact Us</div></a>
+                        <img src="{% static 'images/arrow_white.svg' %}" alt="">
+                    </div>
+                </div>
+                <div class="bg__companies">
+                    <div class="companies__mobi_title">Companies</div>
+                </div>
+                <div class="container">
+
+                    <div class="companies__cards">
+                        {% for company in company %}
+                        <div class="companies__card">
+                            <img src="{{ company.picture.url }}" alt="" class="shok__kyrgyz">
+                            <div class="companies__card_title">{{ company.name }}</div>
+                                       <a href="{% url 'company' pk=company.id %}"><div class="companies__card_btn">
+                                          <div class="companies__card_btn_title">Learn more</div>
+                                           <img src="{% static 'images/companies_arrow.svg' %}" alt="" class="companies_arrow">
+                                       </div></a>
+                        </div>
+                        {% endfor %}
+
+                </div>
+                </div>
+            </section>
+
+            <section class="about">
+                <div class="container about__content">
+                    {% for about_us in about_us %}
+                    <div class="about__text">
+                      <h1 class="about__title">{{ about_us.name }}</h1>
+                      <p class="about__descr">{{ about_us.description }}</p>
+                      <a href="{% url 'success' %}"><div class="btn__about">
+                          <div class="btn__about_title">Success story</div>
+                          <img src="{% static 'images/arrow_white.svg' %}" alt="">
+                      </div></a>
+                    </div>
+                <div class="about__picture">
+                    <img src="{{ about_us.picture.url }}" alt="" class="picture__about">
+                </div>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <footer class="footer" id="contact">
+                <div class="container footer__content">
+                    <div class="footer__card">
+                        <div class="footer__card__title">Contact with us</div>
+                    <div class="form__card">
+                        <div class="form">
+                            <input type="text" placeholder="Name*" class="footer__input">
+                        </div>
+                        <div class="form">
+                            <input type="email" placeholder="Email*" class="footer__input">
+                        </div>
+                        <div class="form">
+                            <input type="number" placeholder="Phone number" class="footer__input">
+                        </div>
+                    </div>
+                    <div class="textaria__card">
+                        <div class="textarea__title">How can we help you?</div>
+                    <textarea name="text" placeholder=" Text here..." id="" cols="30" rows="10" class="textarea"></textarea>
+                    </div>
+                    <a href=""><div class="form__btn">
+                        <div class="form__btns_title">Submit</div>
+                        <img src="{% static 'images/footer_arrow_btn.svg' %}" alt="">
+                    </div></a>
+                    </div>
+                    <div class="footer__cards_follow">
+                        {% for contact in contact %}
+                        <h3 class="footer__follow_title">{{ contact.name }}</h3>
+                        <p class="footer__follow_descr">{{ contact.country }}</p>
+                       <a href="tel:"> <p class="footer__follow_tel">{{ contact.phone_one }}<br></p></a>
+                       <a href="tel:"> <p class="footer__follow_tel">{{ contact.phone_two }}<br></p></a>
+                        <p class="footer__follow_descr">{{ contact.mail }}</p>
+
+                        <div class="footer__social">
+                            <a href="{{ contact.instagram }}" class="social__icon"> <img src="{% static 'images/footer_icon_instagram.svg' %}" alt=""></a>
+                            <a href="{{ contact.gmail }}" class="social__icon"> <img src="{% static 'images/footer_icon_envelope.svg' %}" alt=""></a>
+                            <a href="{{ contact.youtube }}" class="social__icon"> <img src="{%  static 'images/footer_icon_youtube.svg' %}" alt=""></a>
+                            <a href="{{ contact.facebook }}" class="social__icon"> <img src="{% static 'images/footer_icon_facebook.svg' %}" alt=""></a>
+                            <a href="{{ contact.whatsapp_number }}" class="social__icon"> <img src="{% static 'images/whatsapp_icon.svg' %}" alt=""></a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+    {% endblock %}
+    {% block js %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    {% endblock %}
+</body>
+</html>

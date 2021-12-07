@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Company {% endblock %}
+
+{% block content %}
+        <div class="bg__company">
+        <header class="company">
+            <div class="container company__content">
+                <img src="{% static 'images/logo_success_story.svg' %}" alt="" class="logo__about_us">
+                <div class="company__title">About company</div>
+            </div>
+            <div class="line__header"></div>
+        </header>
+
+        <section class="companyCard">
+            <div class="container">
+
+                <div class="company__card">
+                    <div class="company__cards">
+                        <img src="{{ company.picture.url }}" alt="" class="company_card_shok">
+                        <h4 class="company__cards_title">{{ company.name }}</h4>
+                        <p class="company__cards_descr">{{ company.description }}</p>
+                    </div>
+                </div>
+
+                <div class="arrow__company">
+                    <img src="{% static 'images/arrow_company_down.svg' %}" alt="" class="arrow__right">
+                    <img src="{% static 'images/arrow_company_down.svg' %}" alt="" class="arrow__center">
+                    <img src="{% static 'images/arrow_company_down.svg' %}" alt="" class="arrow__left">
+                </div>
+            </div>
+        </section>
+
+        <section class="categories">
+            <div class="container">
+                <div class="categories__title">{{ company.typeProduct }}</div>
+                    {% for product in product %}
+                        <div class="categories__card">
+                                <div class="categories__cards">
+                                    <div class="categories__card_title">{{ product.name }}</div>
+                                    <img src="{{ product.picture.url }}" alt="" class="White">
+                                    <img src="{% static 'images/scribble_2.svg' %}" alt="" class="scribble__left">
+                                    <img src="{% static 'images/scribble_1.svg' %}" alt="" class="scribble__right">
+                                </div>
+                                <div class="categories__cards_center">
+                                    <div class="categories__card_title">{{ product.name }}</div>
+                                    <img src="{{ product.picture.url }}" alt="" class="Milk">
+                                    <img src="{% static 'images/right-drawn-arrow_1.svg' %}" alt="" class="arrow__draw">
+                                    <img src="{% static 'images/arrow-with-scribble_1.svg' %}" alt="" class="arrow__with">
+                                </div>
+                                <div class="categories__cards_row">
+                                    <div class="categories__card_title">{{ product.name }}</div>
+                                    <img src="{{ product.picture.url }}" alt="" class="pic__chuko">
+                                </div>
+                        </div>
+                    {% endfor %}
+            </div>
+                <a href="{%  url 'landing' %}"><div class="categories__btn">
+                    <img src="{% static 'images/arrow__info.svg' %}" alt="">
+                    <h5 class="categories__btn_title">Go to main page</h5>
+                </div></a>
+
+
+        </section>
+    </div>
+{% endblock %}

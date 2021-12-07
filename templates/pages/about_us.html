@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} About Us {% endblock %}
+
+{% block content %}
+    <div class="bg__about_us">
+        <header class="about_us">
+            <div class="container about__us_content">
+                <img src="{% static 'images/logo_success_story.svg' %}" alt="" class="logo__about_us">
+                <div class="about__us_title">About Us</div>
+            </div>
+            <div class="line__header"></div>
+        </header>
+
+        <section class="info">
+            <div class="container">
+                {% for about_us in about_us %}
+                <div class="info__content">
+                <img src="{{ about_us.picture.url }}" alt="" class="info__photo">
+                <div class="arrows__info">
+                 <img src="{% static 'images/arrow_up.svg' %}" alt="" class="arrow__info_up">
+                 <img src="{% static 'images/arrow_down.svg' %}" alt="" class="arrow__info_down">
+                </div>
+                <div class="info__descrp">
+                 <div class="info__descr">{{ about_us.description }}</div>
+                </div>
+               <a href="{% url 'landing' %}"> <div class="info__btn">
+                    <img src="{% static 'images/arrow__info.svg' %}" alt="">
+                    <div class="info__btn_title">Go to main page</div>
+                </div></a>
+            </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+{% endblock %}

@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Companies {% endblock %}
+
+{% block content %}
+       <div class="companies__bgc">
+        <header class="success">
+            <div class="container success__content">
+                <img src="{% static 'images/logo_success_story.svg' %}" alt="" class="logo__success">
+                {% for companies in companies %}
+                <div class="card__companies_title">{{ companies.name }}</div>
+                {% endfor %}
+            </div>
+            <div class="line__header"></div>
+        </header>
+
+        <section class="Kyrgyz__Chocolate">
+            <div class="container">
+                {% for company in company_list %}
+                <div class="Kyrgyz__Chocolate_mobi">Companies</div>
+                <img src="{% static 'images/arrow_down_mobile.svg' %}" alt="" class="arrow__down">
+                <div class="Chocolate__card_row">
+                 <div class="Chocolate__card">
+                    <h1 class="Chocolate__card_title">{{ company.name }}</h1>
+                    <div class="Chocolate__box">
+                        <img src="{{ company.picture.url }}" alt="" class="Chocolate__box_img">
+                        <p class="Chocolate__box_descr">{{ company.description }}</p>
+                       <a href="{% url 'company' pk=company.id %}"> <div class="Chocolate__box_btn">
+                            <div class="Chocolate__box_title">Learn more</div>
+                            <img src="{% static 'images/companies_arrow.svg' %}" alt="">
+                        </div></a>
+                    </div>
+                 </div>
+
+                 <div class="Chocolate__card">
+                    <h1 class="Chocolate__card_title">{{ company.name }}</h1>
+                    <div class="Chocolate__box">
+                        <img src="{{ company.picture.url }}" alt="" class="Chocolate__box_img">
+                        <p class="Chocolate__box_descr">{{ company.description }}</p>
+                       <a href="{% url 'company' pk=company.id %}"> <div class="Chocolate__box_btn">
+                            <div class="Chocolate__box_title">Learn more</div>
+                            <img src="{% static 'images/companies_arrow.svg' %}" alt="">
+                        </div></a>
+                    </div>
+                 </div>
+                </div>
+
+                <div class="Chocolate__card_row">
+                    <div class="Chocolate__card">
+                       <h1 class="Chocolate__card_title">{{ company.name }}</h1>
+                       <div class="Chocolate__box">
+                           <img src="{{ company.picture.url }}" alt="" class="Chocolate__box_img">
+                           <h4 class="Chocolate__box_title_mobi">{{ company.name }}</h4>
+                           <p class="Chocolate__box_descr">{{ company.description }}</p>
+                          <a href="{% url 'company' pk=company.id %}"> <div class="Chocolate__box_btn">
+                               <div class="Chocolate__box_title">Learn more</div>
+                               <img src="{% static 'images/companies_arrow.svg' %}" alt="">
+                           </div></a>
+                       </div>
+                    </div>
+
+                    <div class="Chocolate__card">
+                       <h1 class="Chocolate__card_title">{{ company.name }}</h1>
+                       <div class="Chocolate__box">
+                           <img src="{{ company.picture.url }}" alt="" class="Chocolate__box_img">
+                           <h4 class="Chocolate__box_title_mobi">{{ company.name }}</h4>
+                           <p class="Chocolate__box_descr">{{ company.description }}</p>
+                          <a href="{% url 'company' pk=company.id %}"> <div class="Chocolate__box_btn">
+                               <div class="Chocolate__box_title">Learn more</div>
+                               <img src="{% static 'images/companies_arrow.svg' %}" alt="">
+                           </div></a>
+                       </div>
+                    </div>
+                   </div>
+
+                   <div class="Chocolate__card_row">
+                    <div class="Chocolate__card">
+                       <h1 class="Chocolate__card_title">{{ company.name }}</h1>
+                       <div class="Chocolate__box">
+                           <img src="{{ company.picture.url }}" alt="" class="Chocolate__box_img">
+                        <h4 class="Chocolate__box_title_mobi">{{ company.name }}</h4>
+                           <p class="Chocolate__box_descr">{{ company.description }}</p>
+                          <a href="{% url 'company' pk=company.id %}"> <div class="Chocolate__box_btn">
+                               <div class="Chocolate__box_title">Learn more</div>
+                               <img src="{% static 'images/companies_arrow.svg' %}" alt="">
+                           </div></a>
+                       </div>
+                    </div>
+
+                    <div class="Chocolate__card">
+                       <h1 class="Chocolate__card_title">{{ company.name }}</h1>
+                       <div class="Chocolate__box">
+                           <img src="{{ company.picture.url }}" alt="" class="Chocolate__box_img">
+                        <h4 class="Chocolate__box_title_mobi">{{ company.name }}</h4>
+                           <p class="Chocolate__box_descr">{{ company.description }}</p>
+                          <a href="{% url 'company' pk=company.id %}"> <div class="Chocolate__box_btn">
+                               <div class="Chocolate__box_title">Learn more</div>
+                               <img src="{% static 'images/companies_arrow.svg' %}" alt="">
+                           </div></a>
+                       </div>
+                    </div>
+                   </div>
+                   <div class="Chocolate__card_dowm">
+                    <h1 class="Chocolate__card_title">{{ company.name }}</h1>
+                    <div class="Chocolate__box">
+                        <img src="{{ company.picture.url }}" alt="" class="Chocolate__box_img">
+                        <p class="Chocolate__box_descr">{{ company.description }}</p>
+                       <a href="{% url 'company' pk=company.id %}"> <div class="Chocolate__box_btn">
+                            <div class="Chocolate__box_title">Learn more</div>
+                            <img src="{% static 'images/companies_arrow.svg' %}" alt="">
+                        </div></a>
+                    </div>
+                 </div>
+                {% endfor %}
+                 <a href="{% url 'landing' %}"><div class="Chocolate__card_btn">
+                     <img src="{% static 'images/arrow_story.svg' %}" alt="" class="arrow__chocolate_before">
+                     <img src="{% static 'images/arrow__info.svg' %}" alt="" class="arrow__chocolate_after">
+                     <div class="Chocolate__card_btn_title">Go to main page</div>
+                 </div></a>
+            </div>
+        </section>
+    </div>
+{% endblock %}

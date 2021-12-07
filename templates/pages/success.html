@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block  title %} Success {% endblock %}
+
+{% block content %}
+        <div class="bg__Success">
+        <header class="success">
+            <div class="container success__content">
+                <img src="{% static 'images/logo_success_story.svg' %}" alt="" class="logo__success">
+                <div class="success__title">Success story</div>
+            </div>
+            <div class="line__header"></div>
+        </header>
+
+        <section class="story">
+            <div class="container">
+                {% for success in success %}
+             <div class="pictures__story_content">
+                <div class="pictures__story">
+                    <div class="arrow__story">
+                     <img src="{% static 'images/arrow1_success.svg' %}" alt="" class="arrow1">
+                    </div>
+                    <img src="{{ success.picture.url }}" alt="" class="story__img">
+                </div>
+
+                <img src="{% static 'images/arrow3__success.svg' %}" alt="" class="arrow3">
+                <div class="pictures__story_row">
+                    <div class="arrow__story">
+                     <img src="{% static 'images/arrow2__success.svg' %}" alt="" class="arrow2">
+                    </div>
+                    <img src="{{ success.picture.url }}" alt="" class="story__img_two">
+                </div>
+            </div>
+            <div class="story__descr">{{ success.feedback }}</div>
+           <a href="{% url 'landing' %}"> <div class="story__btn">
+                <img src="{% static 'images/arrow_story.svg' %}" alt="">
+                <div class="story__btns_title">Go to main page</div>
+            </div></a>
+           {% endfor %}
+            </div>
+        </section>
+    </div>
+{% endblock %}
